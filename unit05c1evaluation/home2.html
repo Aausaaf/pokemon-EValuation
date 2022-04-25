@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="navbar"></div>
+    <div id="container"></div>
+    <script>
+       var container = document.getElementById("container")
+        var pokemdata=localStorage.getItem("pokemons")
+        if(pokemdata === null){
+            fetch(`https://pokeapi.co/api/v2/pokemon/1`)
+            .then((res)=>{
+                res.json().then((res)=>{
+                    
+                  let arr=res
+                 console.log(arr)
+    
+                  localStorage.setItem("pokemons",JSON.stringify(arr))
+                })
+    
+            }).catch((err)=>{
+                console.log(err)
+            })
+         
+        }
+     //   console.log()
+          
+          var name2=JSON.parse(localStorage.getItem("pokemons"))
+       // var name2 = name2.url
+          console.log(name2)
+
+         
+     
+
+    </script>
+</body>
+</html>
