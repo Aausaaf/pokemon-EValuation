@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="navbar"></div>
-    <input type="text" id="inputs" placeholder="Enter Id" onchange="change()" />
+    <input type="text" id="inputs" placeholder="Enter Id" oninput="debounce(change,1000)" />
     <div id="containers"></div>
     <script>
        var containers = document.getElementById("containers")
@@ -53,10 +53,15 @@
       containers.append(divs)
 
    }
-  // display(arr)
-         
-     
-
-    </script>
-</body>
-</html>
+   var timerId
+   function debounce(callback,delay)
+{
+    if(timerId)
+    {
+        clearTimeout(timerId)
+    }
+    timerId= setTimeout(function(){
+        callback()
+       
+    } , delay)
+}
