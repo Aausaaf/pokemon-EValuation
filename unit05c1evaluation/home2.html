@@ -9,17 +9,19 @@
 </head>
 <body>
     <div class="navbar"></div>
-    <div id="container"></div>
+    <input type="text" id="inputs" placeholder="Enter Id" />
+    <div id="containers"></div>
     <script>
-       var container = document.getElementById("container")
+       var containers = document.getElementById("containers")
+       var inputs = document.getElementById("inputs")
         var pokemdata=localStorage.getItem("pokemons")
         if(pokemdata === null){
-            fetch(`https://pokeapi.co/api/v2/pokemon/1`)
+            fetch(`https://pokeapi.co/api/v2/pokemon/{inputs.value}`)
             .then((res)=>{
                 res.json().then((res)=>{
                     
                   let arr=res
-                 console.log(arr)
+                 //console.log(arr)
     
                   localStorage.setItem("pokemons",JSON.stringify(arr))
                 })
@@ -33,8 +35,22 @@
           
           var name2=JSON.parse(localStorage.getItem("pokemons"))
        // var name2 = name2.url
-          console.log(name2)
+         // console.log(name2.height)
+   function display(array)
+   {
+       var divs= document.createElement('div')
+       divs.setAttribute("class","divs")
+       var id = document.createElement('p')
+       id.innerHTML = "ID: " +  array.id
+      var name = document.createElement('p')
+      name.innerHTML = "NAME: "  + array.name
+      var height = document.createElement('p')
+      height.innerHTML = "Height: " +  array.height
+      divs.append(id,name,height)
+      containers.append(divs)
 
+   }
+   display(name2)
          
      
 
