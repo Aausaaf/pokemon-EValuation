@@ -28,3 +28,18 @@ body
     border: 0.1vh solid black;
     text-align: center;
 }
+.divs
+{
+    width: 30vw;
+    height: 40vh;
+    border: 0.1vh solid white;
+    box-shadow: 0px 0px 3px 3px #cecece;
+    text-align: center;
+}
+.divs p{
+    margin-top: 4vh;
+}
+#containers{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
